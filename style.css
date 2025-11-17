@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Monospace;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+main {
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1); /* شوية شفافية باش يبان blur */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 5;
+}
+aside {
+  position: relative;
+  border: 2px solid black;
+  border-radius: 16px;
+  margin-top: 3%;
+  margin-left: 2%;
+  height: 80vh;
+  transition: all;
+}
+aside:hover {
+  box-shadow: 15px 15px 15px rgba(88, 100, 100, 0.897);
+  transform: scale(1.03);
+  transition: 0.7s;
+}
+.display-modal {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: larger;
+  background-color: rgb(0, 255, 183);
+  border-radius: 16px;
+}
+button:hover {
+  cursor: pointer;
+}
+.espace-travail {
+  position: relative;
+  background: url(/img/plan.jpg) no-repeat;
+  background-size: contain;
+  width: 80vw;
+  height: 100vh;
+}
+
+.modal {
+  position: absolute;
+  inset: 0;
+  border: 2px solid black;
+  border-radius: 16px;
+  margin-top: 5%;
+  margin-left: 2%;
+  height: 60vh;
+  width: 30vw;
+  color: rgb(0, 0, 0);
+  margin: auto;
+  background: #fff;
+}
+h2 {
+  display: flex;
+  text-align: center;
+}
+.invisible {
+  display: none;
+}
+.close-modal {
+  position: absolute;
+  top: 0;
+  bottom: 10;
+  right: 0;
+  transform: translateX(-50%);
+  font-size: larger;
+  background-color: transparent;
+  border-radius: 16px;
+}
+.div {
+  display: flex;
+  background: #d4cbcbe0;
+  color: rgb(0, 0, 0);
+  border: 2px dotted dodgerblue;
+  height: 30px;
+  width: 60%;
+}
