@@ -12,50 +12,69 @@
       <aside class="dashboard">
         <h1>Espace des personnels</h1>
         <br />
-        <div id="personnels-div"></div>
+        <div class="personnels-div"></div>
         <button onclick="Displaymodal()" class="display-modal" type="button">
           Ajouter un personnel
         </button>
       </aside>
 
-      <section class="espace-travail"></section>
-      
+      <section class="espace-travail">
+        <div class="IT"></div>
+        <div class="Security"></div>
+        <div class="HR"></div>
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+      </section>
     </main>
+    <div class="bg-blur invisible"></div>
     <div class="modal invisible">
-        <button onclick="Closemodal()" class="close-modal" type="button">
-          &#x274C;
-        </button>
-        <form>
-          <h2>Formulaire</h2>
-          <label>Entrer le Nom:</label> <br />
-          <input
-            type="text"
-            id=""
-            class="nom"
-            placeholder="entrer nom personnel"
-          /><br />
-          <label>Entrer le Telephone:</label> <br />
-          <input
-            type="tel"
-            id=""
-            class="telphone"
-            placeholder="entrer tel personnel"
-          /><br />
-          <label>Entrer le email</label> <br />
-          <input
-            type="email"
-            placeholder="entrer email personel"
-            class="email"
-          /><br />
-          <label>Entrer le Role:</label><br />
-          <select name="Role" id="">
-            <option value="IT">IT</option>
-            <option value="Security">Security</option>
-            <option value="Reception">Reception</option>
-            <option value="HR">HR</option>
-          </select>
-          <input type="submit" value="Ajouter" />
-        </form>
-      </div>
+      <button onclick="Closemodal()" class="close-modal" type="button">
+        &#x274C;
+      </button>
+      <form>
+        <h2>Formulaire</h2>
+        <br />
+        <label>Entrer le Nom:</label> <br />
+        <input
+          type="text"
+          id=""
+          class="nom"
+          placeholder="entrer nom personnel"
+        /><br />
+        <label>Entrer l'url d'image</label><br />
+        <input
+          type="text"
+          name=""
+          id=""
+          class="image"
+          placeholder="entrer l'url d'image"
+        /><br />
+        <label>Entrer le Telephone:</label> <br />
+        <input
+          type="tel"
+          id=""
+          class="telphone"
+          placeholder="entrer tel personnel"
+        /><br />
+        <label>Entrer le email</label> <br />
+        <input
+          type="email"
+          placeholder="entrer email personel"
+          class="email"
+        /><br />
+        <label>Entrer le Role:</label><br />
+        <select id="select-role" name="Role" id="">
+          <option value="IT">IT</option>
+          <option value="Security">Security</option>
+          <option value="Reception">Reception</option>
+          <option value="Cleaning">Cleaning</option>
+          <option value="Manager">Manager</option>
+          <option value="Autres">Autres</option>
+        </select>
+
+        <input type="submit" value="Ajouter" />
+      </form>
+    </div>
   </body>
 </html>
