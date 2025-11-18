@@ -11,4 +11,3 @@ function Displaymodal() {
 
   blureddiv.classList.remove("invisible");
 }
-

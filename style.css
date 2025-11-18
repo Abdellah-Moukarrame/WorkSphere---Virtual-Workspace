@@ -121,6 +121,21 @@ form input[type="submit"] {
   gap: 1rem;
   
 }
+
+.div img{
+  display: flex;
+  width: 25px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  
+}
+.div button{
+  background: #fffdfd00;
+  border: none;
+}
 .bg-blur{
   position: absolute;
   inset: 0;
