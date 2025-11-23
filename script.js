@@ -49,6 +49,9 @@ form.addEventListener("submit", (e) => {
   if (!regexrole.test(role)) {
     return alert("le role est invalid");
   }
+  /////////// Experience
+
+
 
   Datapersonnel = {
     personnel_nom: nom,
@@ -75,9 +78,9 @@ function ajouter() {
         <img src=${worker.personnel_image}>
         <h3>${worker.personnel_nom}</h3>
         <h3><bold>${worker.personnel_role}</bold></h3>
-        <button onclick="deletepersonnel(${index})"><img src='/img/delete.png'</button>
-        <button onclick="editpersonnel(${index})"><img src='/img/edit.png'</button>
-        <button onclick="detailspersonnel(${index})"><img src='/img/details.png'</button>
+        <button onclick="deletepersonnel(${index})"><img alt='delete' src='/img/delete.png'</button>
+        <button onclick="editpersonnel(${index})"><img alt='edit' src='/img/edit.png'</button>
+        <button onclick="detailspersonnel(${index})"><img alt='details' src='/img/details.png'</button>
     </div>
     `;
   });
@@ -104,7 +107,7 @@ function detailspersonnel(index) {
   </button>
   <h2> Details de personnels : </h2> <br>
   <h3> Nom:${workers[index].personnel_nom} </h3> <br>
-  <img src=${workers[index].personnel_image} > <br>
+  <img alt='profile' src=${workers[index].personnel_image} > <br>
   <h3>Role:${workers[index].personnel_role}</h3> <br>
   <h3>Telephone:${workers[index].personnel_tel}</h3> <br>
   <h3>Email:${workers[index].personnel_email}</h3> <br>
@@ -112,74 +115,54 @@ function detailspersonnel(index) {
   `;
 }
 //////////////  Edit personnel
-function editpersonnel() {
+function editpersonnel(index) {
+  
+
   edit.classList.remove("invisible");
   blureddiv.classList.remove("invisible");
-  workers.foreach((worker, index) => {
-    edit.innerHTML = `
-  <button onclick="Closemodal()" class="close-modal" type="button">
+
+  edit.innerHTML = `
+    <button onclick="Closemodal()" class="close-modal" type="button">
         &#x274C;
-  </button>
-  <form class='modal'>
+    </button>
+    <form class='modal' onsubmit="enregistrermodif(${index}); return false;">
         <h2>Formulaire</h2>
         <br />
         <label>Modifier le Nom:</label> <br />
-        <input
-          type="text"
-          id=""
-          class="nom"
-          value="${worker.personnel_nom} "
-          placeholder="entrer nom personnel"
-        /><br />
+        <input type="text" class="nom" value="${workers[index].personnel_nom}" />
+
         <label>Modifier l'url d'image</label><br />
-        <input
-          type="text"
-          name=""
-          id=""
-          value="${worker.personnel_image} "
-          class="image"
-          placeholder="entrer l'url d'image"
-        /><br />
+        <input type="text" class="image" value="${workers[index].personnel_image}" />
+
         <label>Modifier le Telephone:</label> <br />
-        <input
-          type="tel"
-          id=""
-          value="${worker.personnel_tel} "
-          class="telphone"
-          placeholder="entrer tel personnel"
-        /><br />
+        <input type="tel" class="telphone" value="${workers[index].personnel_tel}" />
+
         <label>Modifier le email</label> <br />
-        <input
-          type="email"
-          placeholder="entrer email personel"
-          value="${worker.personnel_email} "
-          class="email"
-        /><br />
+        <input type="email" class="email" value="${workers[index].personnel_email}" />
+
         <label>Modifier le Role:</label><br />
-        <select id="select-role" name="Role" id="">
-          <option value="IT" ${
-            worker.personnel_role == "IT" ? "selected" : ""
-          }>IT</option>
-          <option value="Security" ${
-            worker.personnel_role == "Security" ? "selected" : ""
-          }>Security</option>
-          <option value="Reception" ${
-            worker.personnel_role == "Reception" ? "selected" : ""
-          }>Reception</option>
-          <option value="Cleaning" ${
-            worker.personnel_role == "Cleaning" ? "selected" : ""
-          }>Cleaning</option>
-          <option value="Manager" ${
-            worker.personnel_role == "Manager" ? "selected" : ""
-          }>Manager</option>
-          <option value="Autres" ${
-            worker.personnel_role == "Autres" ? "selected" : ""
-          }>Autres</option>
+        <select id="select-role">
+          <option value="IT" ${workers[index].personnel_role === "IT" ? "selected" : ""}>IT</option>
+          <option value="Security" ${workers[index].personnel_role === "Security" ? "selected" : ""}>Security</option>
+          <option value="Reception" ${workers[index].personnel_role === "Reception" ? "selected" : ""}>Reception</option>
+          <option value="Cleaning" ${workers[index].personnel_role === "Cleaning" ? "selected" : ""}>Cleaning</option>
+          <option value="Manager" ${workers[index].personnel_role === "Manager" ? "selected" : ""}>Manager</option>
+          <option value="Autres" ${workers[index].personnel_role === "Autres" ? "selected" : ""}>Autres</option>
         </select>
 
-        <input type="submit" value="Enregestrer(${index})" />
-  </form>
- `;
-  });
+        <input type="submit" value="Enregistrer" />
+    </form>
+  `;
 }
+
+function enregistrermodif(index){
+  workers[index].personnel_nom = document.querySelector(".nom").value.trim();
+  workers[index].personnel_tel = document.querySelector(".telphone").value.trim();
+  workers[index].personnel_image = document.querySelector(".image").value.trim();
+  workers[index].personnel_email = document.querySelector(".email").value.trim();
+  workers[index].personnel_role = document.querySelector("#select-role").value.trim();
+  ajouter();
+}
+
+
 
