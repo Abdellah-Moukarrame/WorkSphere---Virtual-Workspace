@@ -209,26 +209,49 @@ form{
 }
 
 .details-modal {
-  position: absolute;
-  inset: 0;
-  border: 2px solid black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  background: #ffffff;
+  padding: 25px;
   border-radius: 16px;
-  margin-top: 5%;
-  margin-left: 2%;
-  height: 60vh;
-  width: 40vw;
-  color: rgb(0, 0, 0);
-  margin: auto;
-  background: #fff;
-  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 999;
+  text-align: center;
 }
+
+.details-modal h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.details-modal h3 {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
 .details-modal img {
-  display: flex;
-  width: 100px;
-  height: 100px;
-  align-items: center;
-  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 15px 0;
+  border: 3px solid #ddd;
 }
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 
 .IT {
   /* background: #00000034; */

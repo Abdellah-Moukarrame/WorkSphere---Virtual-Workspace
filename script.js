@@ -212,3 +212,96 @@ function enregistrermodif(index) {
   ajouter();
 }
 
+
+////////////// Modal pour ajouter aux zones
+function modalzone(zoneClass) {
+  blureddiv.classList.remove("invisible");
+  zonemodal.classList.remove("invisible");
+  zonemodal.innerHTML = `<button onclick="Closemodal()" class="close-modal" type="button">&#x274C;</button>`;
+
+  workers.forEach((worker, index) => {
+    zonemodal.innerHTML += `
+      <div class='personnel-card'>
+        <img alt='profile' src=${worker.personnel_image}>
+        <h3>${worker.personnel_nom}</h3>
+        <h3><bold>${worker.personnel_role}</bold></h3>
+        <button onclick="ajouter_au_zone(${index}, '${zoneClass}')">Ajouter</button>
+      </div>
+    `;
+  });
+}
+
+let zoneWorkers = {
+  Manager: [],
+  IT: [],
+  Security: [],
+  Reception: [],
+  Cleaning: [],
+  Autres: [],
+};
+
+function ajouter_au_zone(index, zoneClass) {
+  const worker = workers[index];
+
+  const roleszones = {
+    Reception: ["card-zone-reception"],
+    IT: ["card-zone-server"],
+    Security: ["card-zone-security"],
+    Manager: [
+      "card-zone-conference",
+      "card-zone-reception",
+      "card-zone-server",
+      "card-zone-security",
+      "card-zone-staff",
+      "card-zone-arrchive",
+    ],
+    Cleaning: [
+      "card-zone-conference",
+      "card-zone-reception",
+      "card-zone-server",
+      "card-zone-security",
+      "card-zone-staff",
+    ],
+    Autres: [
+      "card-zone-conference",
+      "card-zone-reception",
+      "card-zone-staff",
+    ],
+  };
+
+  if (!roleszones[worker.personnel_role]?.includes(zoneClass))
+    return alert("invalid zone");
+
+  
+  zoneWorkers[worker.personnel_role].push(worker);
+
+  
+  const targetZone = document.querySelector(`.${zoneClass}`);
+  targetZone.insertAdjacentHTML(
+    "beforeend",
+    `<div class="card-zone">
+      <button class="delete-employe-zone" onclick="btnzonedelete(this, '${worker.personnel_role}')">&times;</button>
+      <img alt="profile" src="${worker.personnel_image}">
+      <h3>${worker.personnel_nom}</h3>
+      <h3>${worker.personnel_role}</h3>
+    </div>`
+  );
+  workers.splice(index, 1);
+  localStorage.setItem("worker", JSON.stringify(workers));
+
+  ajouter();
+  modalzone(zoneClass);
+  
+}
+
+function btnzonedelete(button, role) {
+  const card = button.parentElement;
+  if (card) card.remove();
+  const workerToReturn = zoneWorkers[role].pop();
+  if (workerToReturn) {
+    workers.push(workerToReturn);
+    localStorage.setItem("worker", JSON.stringify(workers));
+    ajouter();
+    modalzone();
+  }
+}
