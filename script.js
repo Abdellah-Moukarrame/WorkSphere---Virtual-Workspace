@@ -17,8 +17,32 @@ function Displaymodal() {
   blureddiv.classList.remove("invisible");
 }
 
-/////////////Form
 let Datapersonnel;
+let experiences = [];
+
+/////////// Experience
+const experiencediv = document.querySelector("#experience");
+const btnajouterexperience = document.querySelector("#ajouter-experience");
+btnajouterexperience.addEventListener("click", () => {
+  experiencediv.innerHTML += `
+    <div class="exp-block" style="margin-bottom:10px;">
+      <input type="text" class="exp-company" placeholder="Nom de entreprise" required>
+      <input type="date" class="exp-start" placeholder="Date de début" required>
+      <input type="date" class="exp-end" placeholder="Date de fin" required>
+      <button type="button" class="supprimer-exp">Supprimer</button>
+    </div>
+  `;
+
+  const supprimerexp = experiencediv.querySelectorAll(".supprimer-exp");
+  supprimerexp.forEach((btn) => {
+    btn.onclick = () => {
+      btn.parentElement.remove();
+    };
+  });
+});
+
+///////////// Form
+
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -49,9 +73,6 @@ form.addEventListener("submit", (e) => {
   if (!regexrole.test(role)) {
     return alert("le role est invalid");
   }
-  /////////// Experience
-
-
 
   Datapersonnel = {
     personnel_nom: nom,
@@ -59,6 +80,7 @@ form.addEventListener("submit", (e) => {
     personnel_image: urlimage,
     personnel_email: email,
     personnel_role: role,
+    personnel_experience: experiences,
   };
   workers.push(Datapersonnel);
   console.log(workers);
@@ -116,8 +138,6 @@ function detailspersonnel(index) {
 }
 //////////////  Edit personnel
 function editpersonnel(index) {
-  
-
   edit.classList.remove("invisible");
   blureddiv.classList.remove("invisible");
 
@@ -125,29 +145,49 @@ function editpersonnel(index) {
     <button onclick="Closemodal()" class="close-modal" type="button">
         &#x274C;
     </button>
-    <form class='modal' onsubmit="enregistrermodif(${index}); return false;">
-        <h2>Formulaire</h2>
+    <form class='' onsubmit="enregistrermodif(${index}); return false;">
+        <h2>Edit Formulaire</h2>
         <br />
         <label>Modifier le Nom:</label> <br />
-        <input type="text" class="nom" value="${workers[index].personnel_nom}" />
+        <input type="text" class="nom" value="${
+          workers[index].personnel_nom
+        }" />
 
         <label>Modifier l'url d'image</label><br />
-        <input type="text" class="image" value="${workers[index].personnel_image}" />
+        <input type="text" class="image" value="${
+          workers[index].personnel_image
+        }" />
 
         <label>Modifier le Telephone:</label> <br />
-        <input type="tel" class="telphone" value="${workers[index].personnel_tel}" />
+        <input type="tel" class="telphone" value="${
+          workers[index].personnel_tel
+        }" />
 
         <label>Modifier le email</label> <br />
-        <input type="email" class="email" value="${workers[index].personnel_email}" />
+        <input type="email" class="email" value="${
+          workers[index].personnel_email
+        }" />
 
         <label>Modifier le Role:</label><br />
         <select id="select-role">
-          <option value="IT" ${workers[index].personnel_role === "IT" ? "selected" : ""}>IT</option>
-          <option value="Security" ${workers[index].personnel_role === "Security" ? "selected" : ""}>Security</option>
-          <option value="Reception" ${workers[index].personnel_role === "Reception" ? "selected" : ""}>Reception</option>
-          <option value="Cleaning" ${workers[index].personnel_role === "Cleaning" ? "selected" : ""}>Cleaning</option>
-          <option value="Manager" ${workers[index].personnel_role === "Manager" ? "selected" : ""}>Manager</option>
-          <option value="Autres" ${workers[index].personnel_role === "Autres" ? "selected" : ""}>Autres</option>
+          <option value="IT" ${
+            workers[index].personnel_role === "IT" ? "selected" : ""
+          }>IT</option>
+          <option value="Security" ${
+            workers[index].personnel_role === "Security" ? "selected" : ""
+          }>Security</option>
+          <option value="Reception" ${
+            workers[index].personnel_role === "Reception" ? "selected" : ""
+          }>Reception</option>
+          <option value="Cleaning" ${
+            workers[index].personnel_role === "Cleaning" ? "selected" : ""
+          }>Cleaning</option>
+          <option value="Manager" ${
+            workers[index].personnel_role === "Manager" ? "selected" : ""
+          }>Manager</option>
+          <option value="Autres" ${
+            workers[index].personnel_role === "Autres" ? "selected" : ""
+          }>Autres</option>
         </select>
 
         <input type="submit" value="Enregistrer" />
@@ -155,14 +195,20 @@ function editpersonnel(index) {
   `;
 }
 
-function enregistrermodif(index){
+function enregistrermodif(index) {
   workers[index].personnel_nom = document.querySelector(".nom").value.trim();
-  workers[index].personnel_tel = document.querySelector(".telphone").value.trim();
-  workers[index].personnel_image = document.querySelector(".image").value.trim();
-  workers[index].personnel_email = document.querySelector(".email").value.trim();
-  workers[index].personnel_role = document.querySelector("#select-role").value.trim();
+  workers[index].personnel_tel = document
+    .querySelector(".telphone")
+    .value.trim();
+  workers[index].personnel_image = document
+    .querySelector(".image")
+    .value.trim();
+  workers[index].personnel_email = document
+    .querySelector(".email")
+    .value.trim();
+  workers[index].personnel_role = document
+    .querySelector("#select-role")
+    .value.trim();
   ajouter();
 }
-
-
 

@@ -20,61 +20,76 @@
 
       <section class="espace-travail">
         <div class="IT">
-          <h1>IT Zone</h1>
+          <h1>Conference</h1>
           <br />
-          <button onclick="modalzone()" class="btn-zone IT-btn" type="button">
+          <div class="card-zone-conference"></div>
+          <button
+            onclick="modalzone('card-zone-conference')"
+            class="btn-zone IT-btn"
+            type="button"
+          >
             +
           </button>
         </div>
+
         <div class="Security">
-          <h1>Security Zone</h1>
+          <h1>Reception</h1>
           <br />
+          <div class="card-zone-reception"></div>
           <button
-            onclick="modalzone()"
+            onclick="modalzone('card-zone-reception')"
             class="btn-zone Security-btn"
             type="button"
           >
             +
           </button>
         </div>
+
         <div class="Reception">
-          <h1>Reception Zone</h1>
+          <h1>Server</h1>
           <br />
+          <div class="card-zone-server"></div>
           <button
-            onclick="modalzone()"
+            onclick="modalzone('card-zone-server')"
             class="btn-zone Reception-btn"
             type="button"
           >
             +
           </button>
         </div>
+
         <div class="Cleaning">
-          <h1>Cleaning Zone</h1>
+          <h1>Security</h1>
           <br />
+          <div class="card-zone-security"></div>
           <button
-            onclick="modalzone()"
+            onclick="modalzone('card-zone-security')"
             class="btn-zone Cleaning-btn"
             type="button"
           >
             +
           </button>
         </div>
+
         <div class="Manager">
-          <h1>Manager Zone</h1>
+          <h1>Staff</h1>
           <br />
+          <div class="card-zone-staff"></div>
           <button
-            onclick="modalzone()"
+            onclick="modalzone('card-zone-staff')"
             class="btn-zone Manager-btn"
             type="button"
           >
             +
           </button>
         </div>
+
         <div class="Autres">
-          <h1>Autres Zone</h1>
+          <h1>Archive</h1>
           <br />
+          <div class="card-zone-arrchive"></div>
           <button
-            onclick="modalzone()"
+            onclick="modalzone('card-zone-arrchive')"
             class="btn-zone Autres-btn"
             type="button"
           >
@@ -132,8 +147,9 @@
           <option value="Manager">Manager</option>
           <option value="Autres">Autres</option>
         </select>
+        <button type="button" id="ajouter-experience">Experience+</button><br />
+        <br />
         <div id="experience"></div>
-        <button type="button" id="ajouter-experience">Experience+</button><br /> <br>
 
         <input type="submit" value="Ajouter" />
       </form>

@@ -52,7 +52,7 @@ button:hover {
   border-radius: 16px;
   margin-top: 5%;
   margin-left: 2%;
-  height: 80%;
+  height: 90%;
   width: 40vw;
   color: rgb(0, 0, 0);
   margin: auto;
@@ -93,11 +93,28 @@ form input[type="submit"] {
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  
 }
-form #ajouter-experience {
+#experience {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.supprimer-exp {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  margin-left: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 80px;
+  height: 50px;
+}
+#ajouter-experience {
   color: white;
-  background:  #6c63ff;
+  background: #6c63ff;
   font-size: 20px;
   text-align: center;
   width: 20%;
@@ -217,11 +234,10 @@ form{
   /* background: #00000034; */
   grid-column: 1 / 9;
   grid-row: 1 / 8;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 .Security {
   /* background: #ff000048; */
@@ -265,6 +281,21 @@ form{
   align-items: center;
   justify-content: center;
 }
+.card-zone-conference,
+.card-zone-reception,
+.card-zone-server,
+.card-zone-security,
+.card-zone-staff,
+.card-zone-arrchive {
+  display: block;        
+  max-height: 250px;     
+  overflow-x: auto;      
+  padding: 10px;
+  gap: 10px;             
+  border-radius: 8px;
+}
+
+
 .edit-modal {
   position: absolute;
   inset: 0;
@@ -272,14 +303,14 @@ form{
   border-radius: 16px;
   margin-top: 5%;
   margin-left: 2%;
-  height: 60vh;
+  height: 90%;
   width: 40vw;
   color: rgb(0, 0, 0);
   margin: auto;
   background: #fff;
   align-items: center;
 }
-.zone-modal{
+.zone-modal {
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -296,7 +327,7 @@ form{
   align-items: center;
   overflow-y: auto;
 }
-.personnel-card{
+.personnel-card {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -307,9 +338,8 @@ form{
   height: 15%;
   width: 90%;
   margin-top: 5%;
- 
 }
-.personnel-card img{
+.personnel-card img {
   display: flex;
   width: 33px;
   height: 33px;
@@ -317,10 +347,7 @@ form{
   border: none;
   padding: 2px;
   cursor: pointer;
-  
 }
-
-
 
 .card-zone {
   width: 80px;
@@ -328,15 +355,30 @@ form{
   margin-right: 100px;
   border-radius: 16px;
   background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;            
+  display: flex;                 
+  flex-direction: column;        
+  justify-content: space-evenly; 
+  align-items: center;           
+  gap: 10px;
 }
 
 .card-zone:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.delete-employe-zone {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 .card-zone img {
@@ -347,19 +389,9 @@ form{
 }
 
 .card-zone h3 {
-  margin-top: 12px;
-  font-size: 18px;
-  font-weight: 400;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
   color: #333;
 }
 
-.delete-employe-zone{
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  color: #000;
-  background: #ffffff;
-  font-size: 30px;
-  border:none
-  
-}
